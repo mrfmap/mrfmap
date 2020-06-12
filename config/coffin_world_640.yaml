@@ -1,0 +1,35 @@
+viewer_params_nodes:
+  cam_in_body: [ 0., 0. , 1., 0.,
+                -1.,  0., 0., 0.,
+                0.,  -1., 0., 0.,
+                0.,  0.,  0.,  1.]
+  camera_topic: '/camera/depth/image'
+  odom_topic: '/camera/odometry'
+  is_legacy_odom_msg: False                                           # ROS specific : Are the messages Odom?
+  is_icl_bag: False                                                   # Do we need to add a map transform?
+  img_scale_factor: 1.0                                               # Scaling factor for depth image
+  img_lag: 0.0                                                        # Temporal lag b/w image stream and pose data
+  view_octomap: True                                                  # Visualise octomap concurrently?
+  render_likelihoods: True                                            
+  rotation_thresh: 1.0                                                # Displacement threshold for new KF
+  translation_thresh: 1.0
+
+gvdb_params:
+  K: [381.36115025, 0., 319.5, 0., 381.36115025, 239.5, 0., 0., 1.]
+  res: 0.02                                                           # Map resolution in m
+  prior: 0.1                                                          # Map occupancy prior
+  dims: [4.0, 4.0, 3.0]                                               # Map dimensions in m
+  occ_thresh: 0.5                                                     # Used for octomap
+  acc_thresh: 0.1                                                     # Used for simpleAccuracyKernel (for generating RoC style plots)
+  max_iters: 3                                                        # Max iterations (3 suffices)
+  gvdb_map_config: [3, 3, 3, 3, 3]                                    # GVDB configuration 2^<3,3,3,3,3>
+  rows: 480                                                           # Image dims
+  cols: 640
+  use_polys: False                                                    # Use per sub pixel polynomial data in files?
+  poly_degree: 3
+  depth_sigma_lookup: ""                                              # Path to sigma polys
+  depth_bias_lookup: ""                                               # Path to bias polys
+  const_sigmasq_poly: [0.05, 0, 0]                                    # Constant polynomial used for all pixels
+  # const_sigmasq_poly: [ -0.00029, 0.00037, 0.001365]
+  # const_sigmasq_poly: [0.01, -0.00095238,  0.00857143]
+  # const_bias_poly: [0.02375   , -0.0425    ,  0.04833333]
